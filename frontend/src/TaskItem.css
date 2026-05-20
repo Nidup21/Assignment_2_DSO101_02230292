@@ -1,0 +1,116 @@
+.task-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px;
+  background-color: white;
+  border: 1px solid #eee;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  transition: all 0.2s;
+}
+
+.task-item:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.task-item.completed {
+  background-color: #f9f9f9;
+}
+
+.task-content {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  gap: 12px;
+}
+
+.task-checkbox {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.task-title {
+  font-size: 16px;
+  color: #333;
+}
+
+.task-item.completed .task-title {
+  color: #999;
+  text-decoration: line-through;
+}
+
+.edit-input {
+  flex: 1;
+  padding: 8px;
+  font-size: 16px;
+  border: 2px solid #4CAF50;
+  border-radius: 4px;
+  outline: none;
+}
+
+.task-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.edit-button,
+.delete-button,
+.save-button,
+.cancel-button {
+  padding: 6px 12px;
+  font-size: 14px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.edit-button {
+  background-color: #2196F3;
+  color: white;
+}
+
+.edit-button:hover:not(:disabled) {
+  background-color: #0b7dda;
+}
+
+.delete-button {
+  background-color: #f44336;
+  color: white;
+}
+
+.delete-button:hover:not(:disabled) {
+  background-color: #da190b;
+}
+
+.save-button {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.save-button:hover:not(:disabled) {
+  background-color: #45a049;
+}
+
+.cancel-button {
+  background-color: #999;
+  color: white;
+}
+
+.cancel-button:hover:not(:disabled) {
+  background-color: #777;
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.error-message {
+  color: #d32f2f;
+  font-size: 12px;
+  margin-top: 8px;
+  width: 100%;
+}
