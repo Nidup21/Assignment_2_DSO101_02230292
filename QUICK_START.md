@@ -102,7 +102,7 @@ Manage Jenkins → Manage Plugins → Available
 - [ ] **Scope:** `Global`
 - [ ] **Username:** `nidup21`
 - [ ] **Password:** Paste the Docker Hub access token
-- [ ] **ID:** `docker-hub-credentials`
+- [ ] **ID:** `dockerhub-credentials`
 - [ ] **Description:** `Docker Hub credentials for nidup21`
 - [ ] Click **Create**
 

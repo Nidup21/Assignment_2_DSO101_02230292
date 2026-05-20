@@ -66,7 +66,7 @@ Kind:          Username with password
 Scope:         Global
 Username:      nidup21
 Password:      [Paste Docker Hub access token here]
-ID:            docker-hub-credentials
+ID:            dockerhub-credentials
 Description:   Docker Hub credentials for nidup21
 ```
 
@@ -118,7 +118,7 @@ curl -s https://hub.docker.com/v2/repositories/nidup21/assignment2-backend/tags 
 ### After Phase 11 (Docker Hub Setup):
 - [ ] Docker Hub account created (username: nidup21)
 - [ ] Access token generated and copied
-- [ ] Credentials added to Jenkins with ID: `docker-hub-credentials`
+- [ ] Credentials added to Jenkins with ID: `dockerhub-credentials`
 - [ ] Jenkinsfile shows `nidup21` as Docker username
 
 ### After First Pipeline Build:
@@ -152,7 +152,7 @@ curl -s https://hub.docker.com/v2/repositories/nidup21/assignment2-backend/tags 
 
 | Problem | Solution |
 |---------|----------|
-| "Access denied" when pushing | Verify credentials ID is `docker-hub-credentials` |
+| "Access denied" when pushing | Verify credentials ID is `dockerhub-credentials` |
 | "No matching manifest" error | Check Docker images built successfully (see Jenkins logs) |
 | Images don't appear on Docker Hub | Check "Push to Docker Hub" stage in Jenkins console |
 | Token expired | Generate new access token and update Jenkins credentials |
@@ -193,7 +193,7 @@ After successful pipeline run with Docker Hub:
 Type: Username with password
 Username: nidup21
 Password: dckr_pat_XXXXXXXXXXXXXXXXXXXXXXXXX (your token)
-ID: docker-hub-credentials
+ID: dockerhub-credentials
 Purpose: Push Docker images to Docker Hub
 ```
 

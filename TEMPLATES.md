@@ -423,7 +423,7 @@ properties([
 ### Jenkins Credentials ID References:
 ```
 github-credentials          → GitHub PAT
-docker-hub-credentials      → Docker Hub credentials (nidup21)
+dockerhub-credentials       → Docker Hub credentials (nidup21)
 github-ssh                  → GitHub SSH key
 ```
 

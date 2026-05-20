@@ -6,7 +6,7 @@ pipeline {
     }
     
     environment {
-        GITHUB_URL = 'https://github.com/YOUR_USERNAME/assignment2-node-app.git'
+        GITHUB_URL = 'https://github.com/Nidup21/Assignment_2_DSO101_02230292.git'
         DOCKER_REGISTRY = 'docker.io'
         DOCKER_USERNAME = 'nidup21'
         BACKEND_IMAGE = 'nidup21/assignment2-backend'
@@ -21,7 +21,7 @@ pipeline {
                 git branch: 'main',
                     credentialsId: 'github-credentials',
                     url: "${env.GITHUB_URL}"
-                echo '✅ Code checked out successfully'
+                echo 'Code checked out successfully'
             }
         }
         
@@ -30,7 +30,7 @@ pipeline {
                 echo '====== STAGE: Backend Dependencies Installation ======'
                 dir('backend') {
                     sh 'npm install'
-                    echo '✅ Backend dependencies installed'
+                    echo 'Backend dependencies installed'
                 }
             }
         }
@@ -40,7 +40,7 @@ pipeline {
                 echo '====== STAGE: Backend Unit Tests ======'
                 dir('backend') {
                     sh 'npm test'
-                    echo '✅ Backend tests completed'
+                    echo 'Backend tests completed'
                 }
             }
             post {
@@ -48,10 +48,10 @@ pipeline {
                     junit 'backend/junit.xml'
                 }
                 success {
-                    echo '✅ All backend tests passed!'
+                    echo 'All backend tests passed!'
                 }
                 failure {
-                    echo '❌ Some backend tests failed!'
+                    echo 'Some backend tests failed!'
                 }
             }
         }
@@ -61,7 +61,7 @@ pipeline {
                 echo '====== STAGE: Frontend Dependencies Installation ======'
                 dir('frontend') {
                     sh 'npm install'
-                    echo '✅ Frontend dependencies installed'
+                    echo 'Frontend dependencies installed'
                 }
             }
         }
@@ -71,7 +71,7 @@ pipeline {
                 echo '====== STAGE: Frontend Build ======'
                 dir('frontend') {
                     sh 'npm run build'
-                    echo '✅ Frontend build completed'
+                    echo 'Frontend build completed'
                 }
             }
         }
@@ -81,7 +81,7 @@ pipeline {
                 echo '====== STAGE: Frontend Unit Tests ======'
                 dir('frontend') {
                     sh 'npm test'
-                    echo '✅ Frontend tests completed'
+                    echo 'Frontend tests completed'
                 }
             }
             post {
@@ -89,10 +89,10 @@ pipeline {
                     junit 'frontend/junit.xml'
                 }
                 success {
-                    echo '✅ All frontend tests passed!'
+                    echo 'All frontend tests passed!'
                 }
                 failure {
-                    echo '❌ Some frontend tests failed!'
+                    echo 'Some frontend tests failed!'
                 }
             }
         }
@@ -104,7 +104,7 @@ pipeline {
                     script {
                         docker.build("${env.BACKEND_IMAGE}:latest")
                         docker.build("${env.BACKEND_IMAGE}:${BUILD_NUMBER}")
-                        echo '✅ Backend Docker image built'
+                        echo 'Backend Docker image built'
                     }
                 }
             }
@@ -117,7 +117,7 @@ pipeline {
                     script {
                         docker.build("${env.FRONTEND_IMAGE}:latest")
                         docker.build("${env.FRONTEND_IMAGE}:${BUILD_NUMBER}")
-                        echo '✅ Frontend Docker image built'
+                        echo 'Frontend Docker image built'
                     }
                 }
             }
@@ -130,12 +130,12 @@ pipeline {
             steps {
                 echo '====== STAGE: Push Docker Images to Docker Hub ======'
                 script {
-                    docker.withRegistry("https://${env.DOCKER_REGISTRY}", 'docker-hub-credentials') {
+                    docker.withRegistry("https://${env.DOCKER_REGISTRY}", 'dockerhub-credentials') {
                         docker.image("${env.BACKEND_IMAGE}:latest").push()
                         docker.image("${env.BACKEND_IMAGE}:${BUILD_NUMBER}").push()
                         docker.image("${env.FRONTEND_IMAGE}:latest").push()
                         docker.image("${env.FRONTEND_IMAGE}:${BUILD_NUMBER}").push()
-                        echo '✅ Docker images pushed successfully'
+                        echo 'Docker images pushed successfully'
                     }
                 }
             }
@@ -143,7 +143,7 @@ pipeline {
         
         stage('Build Summary') {
             steps {
-                echo '====== ✅ BUILD PIPELINE COMPLETED SUCCESSFULLY ======'
+                echo '====== BUILD PIPELINE COMPLETED SUCCESSFULLY ======'
                 echo "Build Number: ${BUILD_NUMBER}"
                 echo "Build Duration: ${currentBuild.durationString}"
                 echo "Status: SUCCESS"
@@ -164,18 +164,18 @@ pipeline {
         }
         
         success {
-            echo '✅ BUILD SUCCESSFUL!'
+            echo 'BUILD SUCCESSFUL!'
             echo 'All stages completed successfully.'
             echo 'Ready for deployment.'
         }
         
         failure {
-            echo '❌ BUILD FAILED!'
+            echo 'BUILD FAILED!'
             echo 'Please check the console output for details.'
         }
         
         unstable {
-            echo '⚠️ BUILD UNSTABLE'
+            echo 'BUILD UNSTABLE'
             echo 'Some tests or stages had warnings.'
         }
         
