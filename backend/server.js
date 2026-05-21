@@ -12,8 +12,10 @@ const PORT = process.env.PORT || 5001;
 app.use(cors());
 app.use(express.json());
 
-// Initialize database
-initDb();
+// Initialize database (only if not in test environment)
+if (process.env.NODE_ENV !== 'test') {
+  initDb();
+}
 
 // Routes
 app.use('/', routes);
@@ -34,6 +36,12 @@ app.use((req, res) => {
   res.status(404).json({ error: 'Route not found' });
 });
 
-app.listen(PORT, () => {
-  console.log(`Backend server running on http://localhost:${PORT}`);
-});
+// Only start server if not in test environment
+if (process.env.NODE_ENV !== 'test') {
+  app.listen(PORT, () => {
+    console.log(`Backend server running on http://localhost:${PORT}`);
+  });
+}
+
+// Export app for testing
+module.exports = app;

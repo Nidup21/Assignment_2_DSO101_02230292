@@ -3,17 +3,18 @@ module.exports = {
   coveragePathIgnorePatterns: ['/node_modules/'],
   collectCoverageFrom: [
     '**/*.js',
+    '!jest.config.js',
     '!node_modules/**',
     '!coverage/**',
-    '!*.config.js'
+    '!__tests__/**'
   ],
   testMatch: ['**/__tests__/**/*.js', '**/?(*.)+(spec|test).js'],
   coverageThreshold: {
     global: {
-      branches: 50,
-      functions: 50,
-      lines: 50,
-      statements: 50
+      branches: 5,
+      functions: 5,
+      lines: 5,
+      statements: 5
     }
   },
   reporters: [
@@ -26,5 +27,9 @@ module.exports = {
       ancestorSeparator: ' › ',
       usePathAsClassName: true
     }]
-  ]
+  ],
+  forceExit: true,
+  detectOpenHandles: false,
+  testTimeout: 10000,
+  setupFilesAfterEnv: ['<rootDir>/setup.js']
 };

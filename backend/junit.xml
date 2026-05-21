@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="jest tests" tests="3" failures="0" errors="0" time="0.233">
+  <testsuite name="Server Health Check" errors="0" failures="0" skipped="0" timestamp="2026-05-21T04:20:03" time="0.209" tests="3">
+    <testcase classname="Server Health Check GET /health should return server status" name="Server Health Check GET /health should return server status" time="0.009">
+    </testcase>
+    <testcase classname="Backend API Server should start without errors" name="Backend API Server should start without errors" time="0">
+    </testcase>
+    <testcase classname="Backend API Invalid route should return 404" name="Backend API Invalid route should return 404" time="0.001">
+    </testcase>
+  </testsuite>
+</testsuites>
